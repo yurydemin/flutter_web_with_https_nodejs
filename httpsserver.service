@@ -1,0 +1,14 @@
+[Unit]
+Description=Httpsserver Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/node app.js
+WorkingDirectory=/home/httpsserver/
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
